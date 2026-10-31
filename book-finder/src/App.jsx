@@ -4,7 +4,27 @@ import './App.css'
 function App() {
   const [searchText, setSearchText] = useState('')
   function handleSearch() {
-    console.log(searchText)
+    if (!searchText.trim()) { //tarkistetaan, että hakusana ei ole tyhjä
+      return;
+    }
+    fetchBooks(searchText);
+  }
+  const [books, setBooks] = useState([]);
+
+  async function fetchBooks(query) { //haetaan kirjoja Open Library API:sta
+    let encoded = encodeURIComponent(query); //muutetaan hakusana sopivaan muotoon
+    let url = 'https://openlibrary.org/search.json?q=' + encoded;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data);
+      setBooks(data.docs);
+    } catch (error) {
+      console.error('There was a problem fetching data:', error);
+    }
   }
     return (
     <main className="app">
@@ -19,7 +39,7 @@ function App() {
       <input type="text"
       placeholder="Search for books"
       value={searchText}
-      onChange={(e) => setSearchText(e.target.value)}
+      onChange={(e) => setSearchText(e.target.value)} // päivitetään hakusana tilaan, kun käyttäjä kirjoittaa
       />
       <button onClick={handleSearch}>Search</button>
     </section>
