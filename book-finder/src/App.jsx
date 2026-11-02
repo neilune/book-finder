@@ -30,12 +30,12 @@ function App() {
     <main className="app">
       <header className= "header">
         <h1>Book Finder</h1>
-        <p>TEKSTIÄ TEKSTIÄ TEKSTIÄ</p>
+        <p>search for titles and authors</p>
       </header>
   
 
     <section className="search">
-      <h2>Search for books:</h2>
+      <h2>Search:</h2>
       <input type="text"
       placeholder="Search for books"
       value={searchText}
@@ -43,9 +43,15 @@ function App() {
       />
       <button onClick={handleSearch}>Search</button>
       {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
-        <div key={book.key}>
+        <div key={book.key} className ="book-card">
           <h3>{book.title}</h3>
-          <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}</p>
+          <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}</p> 
+          {book.cover_i && ( 
+            <img
+              src= {`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} 
+              alt = {book.title}
+            />
+          )}
       </div>
     ))}
 
