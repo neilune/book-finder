@@ -42,6 +42,14 @@ function App() {
       onChange={(e) => setSearchText(e.target.value)} // päivitetään hakusana tilaan, kun käyttäjä kirjoittaa
       />
       <button onClick={handleSearch}>Search</button>
+      {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
+        <div key={book.key}>
+          <h3>{book.title}</h3>
+          <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}</p>
+      </div>
+    ))}
+
+
     </section>
 
     </main>
