@@ -27,7 +27,7 @@ function App() {
     }
   }
     return (
-    <main className="app">
+    <main className="app container">
       <header className= "header">
         <h1>Book Finder</h1>
         <p>search for titles and authors</p>
@@ -36,12 +36,17 @@ function App() {
 
     <section className="search">
       <h2>Search:</h2>
-      <input type="text"
-      placeholder="Search for books"
-      value={searchText}
-      onChange={(e) => setSearchText(e.target.value)} // päivitetään hakusana tilaan, kun käyttäjä kirjoittaa
+      <div className="d-flex gap-2">
+        <input //hakukenttä
+        className = "form-control" 
+        type = "text"
+        placeholder ="Search for books"
+        value = {searchText}
+        onChange = {(e) => setSearchText(e.target.value)} // päivitetään hakusana tilaan, kun käyttäjä kirjoittaa
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className="btn btn-primary" onClick={handleSearch}>Search</button>
+      </div>
+      
       {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
         <div key={book.key} className ="book-card">
           <h3>{book.title}</h3>

@@ -189,3 +189,11 @@
   padding: 16px;
   box-shadow: var(--shadow);
 }
+
+.header h1{
+  color:black;
+}
+
+.search h2 {
+  color: black;
+}
