@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import '../App.css'
 
 function Home() {
@@ -33,11 +34,12 @@ function Home() {
         <p>search for titles and authors</p>
       </header>
   
-
-    <section className="search">
+      
+    <section //hakukenttä, nappi ja hakutulokset
+    className="search"> 
       <h2>Search:</h2>
       <div className="d-flex gap-2">
-        <input //hakukenttä
+        <input 
         className = "form-control" 
         type = "text"
         placeholder ="Search for books"
@@ -48,18 +50,25 @@ function Home() {
       </div>
       
       {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
+
         <div key={book.key} className ="book-card">
-          <h3>{book.title}</h3>
-          <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}</p> 
+
+          <Link to ={`/books/${encodeURIComponent(book.key)}`}>
+            <h3>{book.title}</h3>
+          </Link>
+  
+          <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}
+          </p> 
+
           {book.cover_i && ( 
             <img
               src= {`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} 
               alt = {book.title}
             />
           )}
+
       </div>
     ))}
-
 
     </section>
 
