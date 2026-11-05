@@ -1,11 +1,14 @@
 import { useParams} from 'react-router'
 import { useState, useEffect } from 'react'
 
-function Details() {
-  const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [authorName, setAuthorName] = useState([]);
+
+function Details(props) {
+    const { savedBooks, setSavedBooks } = props;
+
+    const { id } = useParams();
+    const [book, setBook] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [authorName, setAuthorName] = useState([]);
 
   
 
@@ -52,6 +55,8 @@ function Details() {
       ) : book ? ( 
         <div>
             <h2>{book.title}</h2>
+            <button className="btn btn-primary"
+            onClick={() => setSavedBooks([...savedBooks, book])}>Add to Library</button>
             <h3>Author: {authorName.join(', ') || 'Unknown author'}</h3>
             <p> First published: {book.first_publish_date || 'Unknown' } </p>
             <p>{book.description?.value || book.description || 'No description available'}</p>
