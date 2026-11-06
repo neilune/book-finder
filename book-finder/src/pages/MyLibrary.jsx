@@ -21,6 +21,24 @@ function MyLibrary(props) {
                     alt = {book.title}
                 />
               )}
+                
+              <div> 
+                <p> Rating:</p>
+                {[1, 2, 3, 4, 5].map((star) => (
+                    <button key={star} className="btn p-0 border 0 bg-transparent text-warning" onClick={() => {
+                        setSavedBooks((currentBooks) =>
+                            currentBooks.map((savedBook) =>
+                                savedBook.key === book.key ? {...savedBook, rating: star} : savedBook
+                            )
+                        );
+                    }}>
+                        {star <= (book.rating || 0) ? '★' : '☆'}
+                    </button>
+                ))}
+
+              </div>
+
+
                 <button
                   className="btn btn-danger"
                   onClick={() =>
