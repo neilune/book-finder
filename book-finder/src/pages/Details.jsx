@@ -9,6 +9,7 @@ function Details(props) {
     const [book, setBook] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [authorName, setAuthorName] = useState([]);
+    const isBookSaved = savedBooks.some ((savedBook) => savedBook.key === book?.key);
 
   
 
@@ -55,9 +56,31 @@ function Details(props) {
       ) : book ? ( 
         <div>
             <h2>{book.title}</h2>
-            <button className="btn btn-primary"
-            onClick={() => setSavedBooks([...savedBooks, book])}>Add to Library</button>
-            <h3>Author: {authorName.join(', ') || 'Unknown author'}</h3>
+            {isBookSaved ? (
+              <button
+                className="btn btn-danger"
+                onClick={() =>
+                  setSavedBooks((currentBooks) =>
+                    currentBooks.filter((savedBook) => savedBook.key !== book.key)
+                  )
+                }
+              >
+                Remove from Library
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  setSavedBooks((currentBooks) => [...currentBooks, book])
+                }
+              >
+                Add to Library
+              </button>
+            )}
+
+            
+
+            <h3>Author: {authorName.join(', ') || 'Unknown author'}</h3> 
             <p> First published: {book.first_publish_date || 'Unknown' } </p>
             <p>{book.description?.value || book.description || 'No description available'}</p>
 
