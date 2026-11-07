@@ -3,7 +3,7 @@ function MyLibrary(props) {
 
   return (
     <div className="container">
-      <h1>My Library</h1>
+      <h1 className="text-dark"> My Library</h1>
 
       {savedBooks.length === 0 ? (
         <p> Your library is empty </p>
@@ -22,7 +22,7 @@ function MyLibrary(props) {
                 />
               )}
                 
-              <div> 
+              <div className = "mb-2"> 
                 <p> Rating:</p>
                 {[1, 2, 3, 4, 5].map((star) => (
                     <button key={star} className="btn p-0 border 0 bg-transparent text-warning" onClick={() => {
@@ -40,7 +40,7 @@ function MyLibrary(props) {
 
 
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger btn-sm"
                   onClick={() =>
                     setSavedBooks((currentBooks) =>
                       currentBooks.filter((savedBook) => savedBook.key !== book.key)

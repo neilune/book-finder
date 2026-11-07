@@ -50,15 +50,40 @@ function Details(props) {
 
   return (
     <div className="container">
-      <h1>Book Details</h1>
+      <h1 className="text-dark">Book Details</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : book ? ( 
+
+        /* Kirjan tiedot */
         <div>
-            <h2>{book.title}</h2>
+            <div className="row">
+
+        {/* KANSIKUVA */}
+            <div className="col-md-4"> 
+                {book.covers && book.covers[0] && (
+                    <div className="mb-3">
+                    <img 
+                    src={`https://covers.openlibrary.org/b/id/${book.covers[0]}-M.jpg`}
+                    alt={book.title}
+                 />
+                </div>
+             )}
+        </div>
+
+        {/* NIMI JA KIRJAILIJA */}
+        <div className="col-md-8">
+            <h2 className="text-dark fw-bold">{book.title}</h2>
+            <h6 className="text-muted mb-3">
+            Author: {authorName.join(', ') || 'Unknown author'}</h6>
+
+        {/* JULKAISUAIKA */}
+            <p className = "mb-3"> First published: {book.first_publish_date || 'Unknown' } </p>
+
+        {/* Nappi kirjan lisäämiseksi tai poistamiseksi kirjastosta */}
             {isBookSaved ? (
               <button
-                className="btn btn-danger"
+                className="btn btn-danger mb-3"
                 onClick={() =>
                   setSavedBooks((currentBooks) =>
                     currentBooks.filter((savedBook) => savedBook.key !== book.key)
@@ -69,7 +94,7 @@ function Details(props) {
               </button>
             ) : (
               <button
-                className="btn btn-primary"
+                className="btn btn-primary mb-3"
                 onClick={() =>
                   setSavedBooks((currentBooks) => [...currentBooks, book])
                 }
@@ -78,11 +103,18 @@ function Details(props) {
               </button>
             )}
 
-            
+            </div>
+            </div>
 
-            <h3>Author: {authorName.join(', ') || 'Unknown author'}</h3> 
-            <p> First published: {book.first_publish_date || 'Unknown' } </p>
-            <p>{book.description?.value || book.description || 'No description available'}</p>
+            {/* KUVAUS */}
+            <div className = "card mb-3 p-3 bg-light border -0 shadow-sm">
+                <div className = "card-body">
+                    <h3 className = "card-title">About the book</h3>
+
+                <p className = "card-text text-muted">
+                    {book.description?.value || book.description || 'No description available'}</p>
+            </div>
+        </div>
 
             <div>
                 {book.subjects ? (
