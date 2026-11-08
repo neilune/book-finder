@@ -31,12 +31,11 @@ function Home() {
     <main className="app container">
       <header className= "header">
         <h1>Book Finder</h1>
-        <p>search for titles and authors</p>
+        <p>Search for titles and authors</p>
       </header>
   
-      
-    <section //hakukenttä, nappi ja hakutulokset
-    className="search"> 
+    {/* HAKUOSIO */}
+    <section className="search d-flex flex-column justify-content-center gap-3">
       <h2>Search:</h2>
       <div className="d-flex gap-2">
         <input 

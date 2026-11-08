@@ -116,13 +116,24 @@ function Details(props) {
             </div>
         </div>
 
-            <div>
+        {/* AIHEET */}
+            <div className = "mt-4 mb-4">
+              <h4 className = "text-dark fw-bold">Subjects</h4>
+
                 {book.subjects ? (
-                    <ul>
-                        {book.subjects.slice(0,5).map((subject, index) => (
-                            <li key={index}>{subject}</li>
-                        ))}
-                    </ul>
+                    <div className = "d-flex flex-wrap justify-content-center gap-2">
+
+                        {book.subjects.slice(0,5).map((subject, index) => {
+                          const cleanedSubject = subject.includes(':') 
+                           ? subject.split(':').slice(1).join(':').trim() : subject;
+
+                          return (
+                            <div key={index} className = "badge bg-secondary p-2">
+                                {cleanedSubject}
+                            </div>
+                          );
+                        })}
+                    </div>
                 ) : (
                     <p>No subjects available</p>
                 )}
