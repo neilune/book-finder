@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 function MyLibrary(props) {
     const { savedBooks, setSavedBooks } = props;
 
@@ -41,11 +44,12 @@ function MyLibrary(props) {
 
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() =>
+                  onClick={() => {
                     setSavedBooks((currentBooks) =>
                       currentBooks.filter((savedBook) => savedBook.key !== book.key)
                     )
-                  }
+                    toast.error('Book removed from Library!');
+                  }}
                 >
                   Remove from Library
                 </button>

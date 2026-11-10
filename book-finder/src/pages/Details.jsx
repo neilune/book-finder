@@ -1,5 +1,6 @@
 import { useParams} from 'react-router'
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify';
 
 
 function Details(props) {
@@ -84,20 +85,22 @@ function Details(props) {
             {isBookSaved ? (
               <button
                 className="btn btn-danger mb-3"
-                onClick={() =>
+                onClick={() => {
                   setSavedBooks((currentBooks) =>
                     currentBooks.filter((savedBook) => savedBook.key !== book.key)
                   )
-                }
+                  toast.error('Book removed from Library!');
+                }}
               >
                 Remove from Library
               </button>
             ) : (
               <button
                 className="btn btn-primary mb-3"
-                onClick={() =>
+                onClick={() => {
                   setSavedBooks((currentBooks) => [...currentBooks, book])
-                }
+                  toast.success('Book added to Library!');
+                }}
               >
                 Add to Library
               </button>

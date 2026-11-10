@@ -4,6 +4,8 @@ import Home from "./pages/Home.jsx";
 import Details from "./pages/Details.jsx";
 import MyLibrary from "./pages/MyLibrary.jsx";
 import NavBar from "./NavBar.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
         } 
       />
       </Routes>
+      <ToastContainer
+      position = "bottom-right"
+      autoClose={1500}
+      theme = "light" />
     </div>
   )
 }
