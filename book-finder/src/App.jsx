@@ -12,8 +12,11 @@ function App() {
   const [savedBooks, setSavedBooks] = useState([]);
 
   return (
-    <div className="App">
-      <NavBar />
+  <>
+  <NavBar />
+  
+  <div className="App">
+    <div className ="page-content">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route 
@@ -31,10 +34,13 @@ function App() {
       />
       </Routes>
       <ToastContainer
-      position = "bottom-right"
+      position = "bottom-center"
       autoClose={1500}
       theme = "light" />
     </div>
+  </div>
+    </>
+
   )
 }
 

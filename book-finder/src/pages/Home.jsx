@@ -28,7 +28,7 @@ function Home() {
     }
   }
     return (
-    <main className="app container">
+    <main className="container-fluid">
       <header className= "header">
         <h1>Book Finder</h1>
         <p>Search for titles and authors</p>
@@ -36,6 +36,7 @@ function Home() {
   
     {/* HAKUOSIO */}
     <section className="search d-flex flex-column justify-content-center gap-3">
+      <div className= "search-header">
       <h2>Search:</h2>
       <div className="d-flex gap-2">
         <input 
@@ -47,13 +48,15 @@ function Home() {
       />
       <button className="btn btn-primary" onClick={handleSearch}>Search</button>
       </div>
+      </div>
       
       {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
 
         <div key={book.key} className ="book-card">
 
-          <Link to ={`/books/${encodeURIComponent(book.key)}`}>
-            <h3>{book.title}</h3>
+          <Link to ={`/books/${encodeURIComponent(book.key)}`}
+          className ="text-decoration-none book-title-link">
+            <h3 className="text-dark">{book.title}</h3>
           </Link>
   
           <p>{book.author_name ? book.author_name.join(', ') : 'Unknown author'}

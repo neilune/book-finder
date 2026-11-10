@@ -50,7 +50,7 @@ function Details(props) {
     }, [id]);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1 className="text-dark">Book Details</h1>
       {isLoading ? (
         <p>Loading...</p>

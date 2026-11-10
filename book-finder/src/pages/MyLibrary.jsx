@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router';
 
 function MyLibrary(props) {
     const { savedBooks, setSavedBooks } = props;
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1 className="text-dark"> My Library</h1>
 
       {savedBooks.length === 0 ? (
@@ -16,7 +17,11 @@ function MyLibrary(props) {
 
         {savedBooks.map((book) => (
             <div key = {book.key} className="book-card">
-                <h3>{book.title}</h3>
+              <Link to ={`/books/${encodeURIComponent(book.key)}`}
+              className ="text-decoration-none book-title-link">
+            <h3 className="text-dark">{book.title}</h3>
+          </Link>
+              
 
                 {book.covers && book.covers[0] && (
                     <img

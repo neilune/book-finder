@@ -184,10 +184,12 @@
 }
 
 .book-card {
+  background-color: #FFF8F5;
   border: 2px solid var(--border);
   border-radius: 10px;
   padding: 16px;
   box-shadow: var(--shadow);
+
 }
 
 .header h1{
@@ -197,4 +199,58 @@
 .search h2 {
   color: black;
 }
+.search input {
+  width: 800px;
+  max-width: 100%;
+}
 
+.search-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.search .book-card {
+  width:100%
+}
+
+.app {
+  background-color: #f3e6e6;
+}
+
+.book-title-link:hover h3 {
+  color: #7e7e7e !important;
+}
+
+.navbar-custom {
+  background-color: #edd7d7 !important;
+  border-bottom: 2px solid var(--border);
+}
+
+.navbar-brand {
+  color: black !important;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.navbar-brand:hover {
+  color: #7e7e7e !important;
+}
+
+.btn-primary {
+  background-color: #8f6262;
+  border-color: #8f6262;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #896b7b;
+  border-color: #896b7b;
+}
+
+.page-content {
+ max-width: 1400px;
+ margin: 0 auto;
+ width: 100%;
+}
