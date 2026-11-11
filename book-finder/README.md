@@ -1,16 +1,23 @@
-# React + Vite
+# BOOK FINDER
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Book finder on kirjojen hakemista varten Reactilla toteutettu verkkosovellus, jonka avulla käyttäjä voi etsiä kirjoja Open Library -rajapinnan kautta, tutustua niiden tietoihin ja lisätä niitä omaan kirjastoonsa. Sovelluksessa voi hakea kirjoja nimen tai kirjailijan perusteella. Omaan kirjastoon tallennetuille kirjoille voi antaa arvosanan.  
 
-Currently, two official plugins are available:
+## Mitä käytetty?
+- React
+- Vite
+- [Open Library API](https://openlibrary.org/developers/api)
+- React Router
+- Bootstrap
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Asennus
+1. Kopioi repositorio:
+    git clone LINKKI
+2. Siirry projektikansioon:
+    cd book-finder
+3. Asenna tarvittavat riippuvuudet:
+    npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Käynnistys
+Käynnistä komennolla npm dev ja avaa terminaaliissa näkyvä osoite.

@@ -4,6 +4,7 @@ import '../App.css'
 
 function Home() {
   const [searchText, setSearchText] = useState('')
+  const [searched, setSearched] = useState(false) //onko haku tehty
   function handleSearch() {
     if (!searchText.trim()) { //tarkistetaan, että hakusana ei ole tyhjä
       return;
@@ -23,6 +24,7 @@ function Home() {
       const data = await response.json();
       console.log(data);
       setBooks(data.docs);
+      setSearched(true);
     } catch (error) {
       console.error('There was a problem fetching data:', error);
     }
@@ -49,6 +51,9 @@ function Home() {
       <button className="btn btn-primary" onClick={handleSearch}>Search</button>
       </div>
       </div>
+
+      {searched && books.length === 0 && (
+        <p className="text-dark">No books found. Please try another search.</p>)}
       
       {books.map((book) => ( // käydään läpi haetut kirjat ja näytetään niiden nimet
 
