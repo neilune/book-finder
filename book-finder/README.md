@@ -13,11 +13,11 @@ Book finder on kirjojen hakemista varten Reactilla toteutettu verkkosovellus, jo
 
 ## Asennus
 1. Kopioi repositorio:
-    git clone LINKKI
+    git clone https://github.com/neilune/book-finder.git 
 2. Siirry projektikansioon:
     cd book-finder
 3. Asenna tarvittavat riippuvuudet:
     npm install
 
 ## Käynnistys
-Käynnistä komennolla npm dev ja avaa terminaaliissa näkyvä osoite.
+Käynnistä komennolla npm dev run ja avaa terminaaliissa näkyvä osoite.
